@@ -1,0 +1,46 @@
+---
+// 三位一体业务板块（对齐泰康之家板块3「五位一体」）
+const items = [
+  {
+    title: '机构养老',
+    desc: '宽逸、英明、桃花源三家颐养院，覆盖海珠、荔湾、白云三区，普惠到旗舰多种选择',
+    icon: 'M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6',
+  },
+  {
+    title: '中医医疗',
+    desc: '小港中医医院医保定点，中医诊疗、康复理疗、住院服务，长者看病不出楼',
+    icon: 'M12 4v16m8-8H4M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16',
+  },
+  {
+    title: '老年大学',
+    desc: '依托卓越教育29年教育底蕴，文娱课程、长幼共融，让晚年成为另一场芳华',
+    icon: 'M22 10 12 5 2 10l10 5 10-5zM6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5',
+  },
+];
+---
+
+<section class="bg-white py-14 md:py-20">
+  <div class="mx-auto max-w-[85rem] px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm font-bold tracking-widest text-orange-500">为长者提供</p>
+      <h2 class="mt-2 text-2xl font-bold text-neutral-800 md:text-4xl">
+        三位一体的享老生活方式
+      </h2>
+    </div>
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {
+        items.map(item => (
+          <div class="group rounded-2xl bg-orange-50/60 p-8 ring-1 ring-orange-100 transition hover:-translate-y-1 hover:shadow-lg">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500 text-white">
+              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d={item.icon} />
+              </svg>
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-neutral-800">{item.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-neutral-600">{item.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+---
+// 卓越大健康官网首页：对齐泰康之家 9 板块结构
+import MainLayout from '@/layouts/MainLayout.astro';
+import HeroCarousel from '@components/sections/home/HeroCarousel.astro';
+import StatsWall from '@components/sections/home/StatsWall.astro';
+import TrinitySection from '@components/sections/home/TrinitySection.astro';
+import ChecklistSection from '@components/sections/home/ChecklistSection.astro';
+import VoiceCarousel from '@components/sections/home/VoiceCarousel.astro';
+import NewsTabs from '@components/sections/home/NewsTabs.astro';
+import InstitutionsGrid from '@components/sections/home/InstitutionsGrid.astro';
+import VisitForm from '@components/sections/home/VisitForm.astro';
+---
+
+<MainLayout title="卓越大健康 · 广州医养结合｜宽逸颐养院 英明老人疗养院 桃花源颐养院 小港中医医院">
+  {/* 1. Hero 轮播 */}
+  <HeroCarousel />
+  {/* 2. 大数字信任墙 */}
+  <StatsWall />
+  {/* 3. 三位一体业务 */}
+  <TrinitySection />
+  {/* 4. 对勾卖点清单 */}
+  <ChecklistSection />
+  {/* 5. 长者心声（占位，待真实素材） */}
+  <VoiceCarousel />
+  {/* 6. 新闻动态双 Tab（跳公众号） */}
+  <NewsTabs />
+  {/* 7. 业务板块 5 机构卡片 */}
+  <InstitutionsGrid />
+  {/* 8. 预约参观表单（展示型） */}
+  <VisitForm />
+</MainLayout>

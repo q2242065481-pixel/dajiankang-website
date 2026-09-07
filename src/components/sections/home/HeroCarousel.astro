@@ -1,0 +1,119 @@
+---
+// Hero 全宽轮播（对齐泰康之家首页板块1）：Swiper 自动播放 + 左下角文案 + 分页指示
+interface Slide {
+  image: string;
+  alt: string;
+  line1: string;
+  line2: string;
+  btnText: string;
+  btnUrl: string;
+}
+
+const slides: Slide[] = [
+  {
+    image: '/images/hero-kuanyi.jpg',
+    alt: '宽逸颐养院',
+    line1: '楼上养老 楼下医院',
+    line2: '一碗汤的距离，是孝心最好的尺度',
+    btnText: '了解宽逸颐养院',
+    btnUrl: '/jigou#kuanyi',
+  },
+  {
+    image: '/images/hero-xiaogang.jpg',
+    alt: '小港中医医院',
+    line1: '看病不出楼 养老更安心',
+    line2: '医保定点 · 中医诊疗 · 康复理疗',
+    btnText: '了解小港中医医院',
+    btnUrl: '/jigou#xiaogang',
+  },
+  {
+    image: '/images/hero-taohuayuan.jpg',
+    alt: '桃花源颐养院',
+    line1: '4K起 庭院式普惠养老',
+    line2: '白云站旁带阳台的家，高铁探望也方便',
+    btnText: '了解桃花源颐养院',
+    btnUrl: '/jigou#taohuayuan',
+  },
+  {
+    image: '/images/hero-kangfu.jpg',
+    alt: '专业康复大厅',
+    line1: '三院长护险定点',
+    line2: '医保可结算，专业照护守护每一天',
+    btnText: '预约参观',
+    btnUrl: '/contact#yuyue',
+  },
+];
+---
+
+<section class="relative -mt-4 overflow-hidden rounded-2xl md:rounded-3xl">
+  <div class="swiper hero-swiper">
+    <div class="swiper-wrapper">
+      {
+        slides.map(s => (
+          <div class="swiper-slide relative">
+            <img
+              src={s.image}
+              alt={s.alt}
+              class="h-[62vh] min-h-[380px] w-full object-cover md:h-[74vh]"
+              loading="eager"
+            />
+            {/* 渐变遮罩 */}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
+            {/* 左下角文案 */}
+            <div class="absolute bottom-10 left-6 max-w-xl md:bottom-16 md:left-14">
+              <h2 class="text-3xl font-bold text-white drop-shadow md:text-5xl md:leading-tight">
+                {s.line1}
+              </h2>
+              <p class="mt-2 text-base text-white/90 drop-shadow md:mt-3 md:text-xl">
+                {s.line2}
+              </p>
+              <a
+                href={s.btnUrl}
+                class="mt-4 inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-orange-600 md:mt-6"
+              >
+                {s.btnText}
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    {/* 分页器 */}
+    <div class="swiper-pagination hero-pagination"></div>
+  </div>
+</section>
+
+<style>
+  .hero-pagination {
+    bottom: 16px !important;
+    left: auto !important;
+    right: 24px !important;
+    width: auto !important;
+  }
+  .hero-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    opacity: 1;
+  }
+  .hero-pagination .swiper-pagination-bullet-active {
+    background: #f97316;
+    width: 26px;
+    border-radius: 6px;
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper';
+  import { Autoplay, Pagination } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+
+  new Swiper('.hero-swiper', {
+    modules: [Autoplay, Pagination],
+    loop: true,
+    autoplay: { delay: 5000, disableOnInteraction: false },
+    pagination: { el: '.hero-pagination', clickable: true },
+  });
+</script>

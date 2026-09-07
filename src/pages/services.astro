@@ -1,0 +1,86 @@
+---
+// 医养服务页：对齐泰康之家服务体系页（持续照护 + 解决方案卡片）
+import MainLayout from '@/layouts/MainLayout.astro';
+
+const services = [
+  {
+    title: '活力生活',
+    desc: '每日早操、老年大学课程、节庆活动、早茶活动，让长者老有所乐',
+    tags: ['自理长者', '三院通用'],
+  },
+  {
+    title: '专业护理',
+    desc: '生活照料、健康管理、慢病管理，压疮护理、管道护理、骨折护理、脑梗中风护理等专项照护',
+    tags: ['失能长者', '24小时值班'],
+  },
+  {
+    title: '认知症专区',
+    desc: '宽逸、桃花源均设认知症专区，个案照护、生活康复、医护每日查房',
+    tags: ['认知症长者', '专区照护'],
+  },
+  {
+    title: '康复医疗',
+    desc: '小港中医医院康复大厅专业设备，康复训练、术后康复、中医推拿，医保可结算',
+    tags: ['医保定点', '中医特色'],
+  },
+  {
+    title: '临终关怀',
+    desc: '桃花源、英明提供临终关怀服务，让生命的谢幕有尊严、无遗憾',
+    tags: ['桃花源', '英明'],
+  },
+];
+---
+
+<MainLayout title="医养服务｜卓越大健康">
+  <section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm font-bold tracking-widest text-orange-500">医养服务</p>
+      <h1 class="mt-2 text-3xl font-bold text-neutral-800 md:text-4xl">
+        覆盖全照护周期的服务体系
+      </h1>
+      <p class="mt-4 leading-relaxed text-neutral-600">
+        从活力自理到专业护理、认知症照护、康复医疗与临终关怀，长者在身体状况变化时，依然可以在熟悉的环境中获得对应的照料服务。
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        services.map(s => (
+          <div class="rounded-2xl bg-white p-7 shadow-sm ring-1 ring-neutral-200/60 transition hover:-translate-y-1 hover:shadow-md">
+            <div class="flex flex-wrap gap-2">
+              {s.tags.map(t => (
+                <span class="rounded-full bg-orange-100 px-3 py-1 text-xs font-bold text-orange-600">{t}</span>
+              ))}
+            </div>
+            <h2 class="mt-4 text-xl font-bold text-neutral-800">{s.title}</h2>
+            <p class="mt-2 text-sm leading-relaxed text-neutral-600">{s.desc}</p>
+          </div>
+        ))
+      }
+      {/* CTA 卡 */}
+      <a
+        href="/contact#yuyue"
+        class="group flex flex-col items-center justify-center rounded-2xl bg-orange-500 p-7 text-center text-white transition hover:-translate-y-1 hover:bg-orange-600"
+      >
+        <p class="text-xl font-bold">不确定哪种服务适合？</p>
+        <p class="mt-2 text-sm text-orange-100">预约到院，顾问为您评估建议</p>
+        <span class="mt-4 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm font-bold text-orange-600">
+          预约参观 <span aria-hidden="true">→</span>
+        </span>
+      </a>
+    </div>
+
+    {/* 三院共有服务说明 */}
+    <div class="mt-14 rounded-2xl bg-orange-50/60 p-8 ring-1 ring-orange-100">
+      <h2 class="text-lg font-bold text-neutral-800">三院共有基础服务</h2>
+      <div class="mt-4 grid gap-3 text-sm text-neutral-600 sm:grid-cols-2 lg:grid-cols-3">
+        <p>· 生活照料 / 健康管理 / 慢病管理</p>
+        <p>· 康复训练 / 术后康复 / 骨折护理</p>
+        <p>· 脑梗中风护理 / 压疮护理 / 管道护理</p>
+        <p>· 社工服务 / 每月生日会 / 志愿者陪伴</p>
+        <p>· 老年大学课程 / 每日早操</p>
+        <p>· 普食 / 软食 / 流食分级餐饮</p>
+      </div>
+    </div>
+  </section>
+</MainLayout>

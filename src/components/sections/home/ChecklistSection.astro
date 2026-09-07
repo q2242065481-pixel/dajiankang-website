@@ -1,0 +1,45 @@
+---
+// 对勾卖点清单（对齐泰康之家板块5）：左文右清单
+const checklist = [
+  '医保可结算',
+  '长护险定点（广州长护险）',
+  '城央地段 家门口养老',
+  '真医养结合（宽逸·小港同址）',
+  '29年教育品牌底蕴',
+  '老年大学文娱课程',
+];
+---
+
+<section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 md:py-20 lg:px-8">
+  <div class="grid items-center gap-10 lg:grid-cols-2">
+    <div>
+      <p class="text-sm font-bold tracking-widest text-orange-500">为长者创建</p>
+      <h2 class="mt-2 text-2xl font-bold text-balance text-neutral-800 md:text-4xl">
+        家门口、信得过、用得起的养老社区
+      </h2>
+      <p class="mt-4 leading-relaxed text-neutral-600">
+        卓越大健康以「养老+医疗+教育」的融合模式，帮助广州家庭解决长者照护难题：三大院区覆盖海珠、荔湾、白云，费用从普惠到旗舰梯度分明，长护险与医保双重保障减轻家庭负担。
+      </p>
+      <a
+        href="/jigou"
+        class="mt-6 inline-flex items-center gap-2 rounded-full bg-orange-500 px-7 py-3 text-sm font-bold text-white transition hover:bg-orange-600"
+      >
+        查看旗下机构 <span aria-hidden="true">→</span>
+      </a>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2">
+      {
+        checklist.map(item => (
+          <div class="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm ring-1 ring-neutral-200/60">
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-100 text-orange-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </span>
+            <span class="text-sm font-medium text-neutral-800">{item}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

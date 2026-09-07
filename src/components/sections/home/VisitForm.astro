@@ -1,0 +1,86 @@
+---
+// 预约参观表单（对齐泰康之家板块9）：展示型表单，暂不接后端
+import { institutions } from '@data/site_content';
+const visitable = institutions.filter(i => i.id !== 'daxue');
+---
+
+<section id="yuyue" class="bg-orange-50/60 py-14 md:py-20">
+  <div class="mx-auto max-w-[85rem] px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm font-bold tracking-widest text-orange-500">为您安排</p>
+      <h2 class="mt-2 text-2xl font-bold text-neutral-800 md:text-4xl">
+        预约参观，实地看看再决定
+      </h2>
+      <p class="mt-4 text-neutral-600">
+        留下您的称呼和电话，我们的顾问会尽快与您联系，安排到院参观。
+      </p>
+    </div>
+
+    <form
+      id="visit-form"
+      class="mx-auto mt-10 grid max-w-4xl gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-neutral-200/60 sm:grid-cols-2 lg:grid-cols-4 lg:p-8"
+    >
+      <div>
+        <label for="visit-name" class="sr-only">您的称呼</label>
+        <input
+          id="visit-name"
+          name="name"
+          type="text"
+          required
+          placeholder="您的称呼"
+          class="w-full rounded-xl border-neutral-300 px-4 py-3 text-sm focus:border-orange-500 focus:ring-orange-500"
+        />
+      </div>
+      <div>
+        <label for="visit-phone" class="sr-only">联系电话</label>
+        <input
+          id="visit-phone"
+          name="phone"
+          type="tel"
+          required
+          pattern="[0-9\-+ ]{7,15}"
+          placeholder="联系电话"
+          class="w-full rounded-xl border-neutral-300 px-4 py-3 text-sm focus:border-orange-500 focus:ring-orange-500"
+        />
+      </div>
+      <div>
+        <label for="visit-org" class="sr-only">意向院区</label>
+        <select
+          id="visit-org"
+          name="org"
+          required
+          class="w-full rounded-xl border-neutral-300 px-4 py-3 text-sm text-neutral-600 focus:border-orange-500 focus:ring-orange-500"
+        >
+          <option value="" disabled selected>意向院区</option>
+          {visitable.map(v => <option value={v.id}>{v.name}</option>)}
+          <option value="any">都可以，帮我推荐</option>
+        </select>
+      </div>
+      <button
+        type="submit"
+        class="rounded-xl bg-orange-500 px-6 py-3 text-sm font-bold text-white transition hover:bg-orange-600"
+      >
+        提交预约
+      </button>
+      <p class="text-xs text-neutral-400 sm:col-span-2 lg:col-span-4">
+        提交即表示您同意我们就参观事宜与您电话联系。您的信息仅用于本次预约，不会用于其他用途。
+      </p>
+    </form>
+    <p id="visit-form-tip" class="mt-4 hidden text-center text-sm font-bold text-orange-600"></p>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('visit-form') as HTMLFormElement | null;
+  const tip = document.getElementById('visit-form-tip');
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+    // 展示型表单：暂未接入后端（上线前接入腾讯问卷/金数据等表单服务）
+    if (tip) {
+      tip.textContent =
+        '已收到您的预约意向（当前为演示环境，信息未实际提交；正式上线后将接入表单服务）';
+      tip.classList.remove('hidden');
+    }
+    form.reset();
+  });
+</script>

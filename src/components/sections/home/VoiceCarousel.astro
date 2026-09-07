@@ -1,0 +1,70 @@
+---
+// 长者心声轮播（对齐泰康之家板块6「听居民心声」整版橙色）
+// 合规说明：当前为占位内容，上线前必须替换为真实长者/家属证言素材
+---
+
+<section class="bg-orange-500 py-14 md:py-20">
+  <div class="mx-auto max-w-[85rem] px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm font-bold tracking-widest text-orange-100">听长者心声</p>
+      <h2 class="mt-2 text-2xl font-bold text-white md:text-4xl">
+        长者和家属这样说
+      </h2>
+    </div>
+
+    <div class="swiper voice-swiper mt-12">
+      <div class="swiper-wrapper">
+        {
+          [1, 2, 3].map(i => (
+            <div class="swiper-slide">
+              <figure class="mx-auto max-w-2xl text-center">
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-white/20 text-3xl text-white ring-4 ring-white/30">
+                  <svg class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </div>
+                <blockquote class="mt-6 text-lg leading-relaxed text-white md:text-xl">
+                  「【待替换：真实长者/家属证言 {i}，请从院内感谢信、锦旗、家属反馈中选取并获授权后使用】」
+                </blockquote>
+                <figcaption class="mt-4 text-sm text-orange-100">
+                  —— 长者/家属称呼 · 所属院区
+                </figcaption>
+              </figure>
+            </div>
+          ))
+        }
+      </div>
+      <div class="swiper-pagination voice-pagination mt-8"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .voice-pagination {
+    position: static !important;
+  }
+  .voice-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+  }
+  .voice-pagination .swiper-pagination-bullet-active {
+    background: #fff;
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper';
+  import { Autoplay, Pagination } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+
+  new Swiper('.voice-swiper', {
+    modules: [Autoplay, Pagination],
+    loop: true,
+    autoplay: { delay: 6000, disableOnInteraction: false },
+    pagination: { el: '.voice-pagination', clickable: true },
+  });
+</script>

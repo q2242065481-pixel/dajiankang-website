@@ -1,0 +1,109 @@
+---
+// 业务板块页：5 家机构图文详情（数据来自官方《三院宣传卖点归纳》）
+import MainLayout from '@/layouts/MainLayout.astro';
+import { institutions } from '@data/site_content';
+
+const gallery = [
+  { src: '/images/fac-hall1.jpg', alt: '小港中医医院一楼大厅' },
+  { src: '/images/fac-kangfu.jpg', alt: '小港中医医院康复大厅' },
+  { src: '/images/fac-zhuyuan1.jpg', alt: '小港中医医院住院部' },
+  { src: '/images/fac-hushizhan.jpg', alt: '小港中医医院护士站' },
+  { src: '/images/fac-tuina.jpg', alt: '小港中医医院中医推拿室' },
+  { src: '/images/fac-yaofang.jpg', alt: '小港中医医院药房' },
+  { src: '/images/fac-yibao.jpg', alt: '医保定点标识' },
+  { src: '/images/fac-houzhen.jpg', alt: '小港中医医院候诊厅' },
+];
+---
+
+<MainLayout title="业务板块｜卓越大健康">
+  <section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm font-bold tracking-widest text-orange-500">业务板块</p>
+      <h1 class="mt-2 text-3xl font-bold text-neutral-800 md:text-4xl">
+        三家颐养院 · 一家中医医院 · 一所老年大学
+      </h1>
+      <p class="mt-4 text-neutral-600">
+        全部院区均为长护险定点机构，医保可结算。宽逸颐养院与小港中医医院同址一体，实现「楼上养老、楼下医院」。
+      </p>
+    </div>
+
+    {/* 机构详情区块 */}
+    <div class="mt-14 space-y-16">
+      {
+        institutions.map((inst, i) => (
+          <article id={inst.id} class="scroll-pt-24">
+            <div class={`grid items-center gap-8 lg:grid-cols-2 ${i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
+              <img
+                src={inst.image}
+                alt={inst.imageAlt}
+                class="h-72 w-full rounded-2xl object-cover shadow-sm md:h-96"
+                loading="lazy"
+              />
+              <div>
+                <div class="flex flex-wrap gap-2">
+                  {inst.tags.map(t => (
+                    <span class="rounded-full bg-orange-100 px-3 py-1 text-xs font-bold text-orange-600">{t}</span>
+                  ))}
+                </div>
+                <h2 class="mt-4 text-2xl font-bold text-neutral-800 md:text-3xl">{inst.name}</h2>
+                <p class="mt-1 font-bold text-orange-500">{inst.tagline}</p>
+                {inst.bound && (
+                  <p class="mt-2 inline-block rounded-lg bg-orange-50 px-3 py-1.5 text-sm text-orange-700 ring-1 ring-orange-200">
+                    {inst.bound}
+                  </p>
+                )}
+                <p class="mt-4 leading-relaxed text-neutral-600">{inst.description}</p>
+                <dl class="mt-6 space-y-2">
+                  {inst.facts.map(f => (
+                    <div class="flex gap-3 text-sm">
+                      <dt class="w-14 shrink-0 font-bold text-neutral-500">{f.label}</dt>
+                      <dd class="text-neutral-700">{f.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <div class="mt-6 flex flex-wrap gap-3">
+                  {inst.articleUrl && (
+                    <a
+                      href={inst.articleUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-orange-600"
+                    >
+                      公众号图文详情 <span aria-hidden="true">→</span>
+                    </a>
+                  )}
+                  <a
+                    href="/contact#yuyue"
+                    class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 text-sm font-bold text-orange-600 ring-1 ring-orange-300 transition hover:bg-orange-50"
+                  >
+                    预约参观
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    {/* 小港中医医院实景图集 */}
+    <div class="mt-20">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-bold tracking-widest text-orange-500">实地实景</p>
+        <h2 class="mt-2 text-2xl font-bold text-neutral-800 md:text-3xl">
+          小港中医医院 · 院内实景
+        </h2>
+      </div>
+      <div class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+        {
+          gallery.map(g => (
+            <figure class="overflow-hidden rounded-xl shadow-sm ring-1 ring-neutral-200/60">
+              <img src={g.src} alt={g.alt} class="h-40 w-full object-cover transition duration-500 hover:scale-105 md:h-48" loading="lazy" />
+              <figcaption class="bg-white px-3 py-2 text-xs text-neutral-500">{g.alt}</figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,74 @@
+---
+// 关于我们页：卓越教育背景 + 集团介绍 + 荣誉/历程（占位待补）
+import MainLayout from '@/layouts/MainLayout.astro';
+
+const milestones = [
+  { year: '1997', text: '卓越教育创立，深耕教育领域（29年品牌底蕴）' },
+  { year: '【待补充】', text: '卓越大健康品牌成立，跨界布局医养产业（「一老一小」战略）' },
+  { year: '【待补充】', text: '桃花源颐养院开业（卓越教育旗下首家颐养院）' },
+  { year: '【待补充】', text: '宽逸颐养院开业，与小港中医医院同址一体，落地「楼上养老、楼下医院」' },
+  { year: '至今', text: '三大院区全部成为长护险定点机构，医保可结算' },
+];
+---
+
+<MainLayout title="关于我们｜卓越大健康">
+  <section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm font-bold tracking-widest text-orange-500">关于我们</p>
+      <h1 class="mt-2 text-3xl font-bold text-neutral-800 md:text-4xl">
+        卓越教育旗下卓越大健康
+      </h1>
+      <p class="mt-6 leading-relaxed text-neutral-600">
+        卓越大健康是卓越教育集团旗下医养品牌。卓越教育深耕教育29年，从「一小」到「一老」，将教育的温度延伸至养老领域，在广州运营宽逸颐养院、英明老人疗养院、桃花源颐养院三家养老机构与小港中医医院，并开设老年大学，为长者提供「养老+医疗+教育」融合的晚年生活方案。
+      </p>
+    </div>
+
+    {/* 品牌数据 */}
+    <div class="mt-12 grid grid-cols-2 gap-6 md:grid-cols-4">
+      {
+        [
+          { count: '29年', label: '卓越教育品牌底蕴' },
+          { count: '3家', label: '长护险定点颐养院' },
+          { count: '1家', label: '医保定点中医医院' },
+          { count: '3区', label: '覆盖海珠·荔湾·白云' },
+        ].map(s => (
+          <div class="rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-neutral-200/60">
+            <p class="text-3xl font-bold text-orange-500">{s.count}</p>
+            <p class="mt-2 text-sm text-neutral-600">{s.label}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    {/* 发展历程 */}
+    <div class="mt-16">
+      <h2 class="text-center text-2xl font-bold text-neutral-800">发展历程</h2>
+      <div class="mx-auto mt-8 max-w-2xl">
+        <ol class="relative border-l-2 border-orange-200">
+          {
+            milestones.map(m => (
+              <li class="mb-8 ml-6">
+                <span class="absolute -left-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-orange-500 ring-4 ring-orange-100" />
+                <p class="font-bold text-orange-600">{m.year}</p>
+                <p class="mt-1 text-sm text-neutral-600">{m.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+
+    {/* 荣誉资质 */}
+    <div class="mt-16 rounded-2xl bg-orange-50/60 p-8 ring-1 ring-orange-100">
+      <h2 class="text-center text-2xl font-bold text-neutral-800">荣誉资质</h2>
+      <div class="mt-6 grid gap-3 text-center text-sm text-neutral-600 sm:grid-cols-2 lg:grid-cols-3">
+        <p class="rounded-xl bg-white p-4 ring-1 ring-neutral-200/60">广州市海珠区医康养联盟（宽逸）</p>
+        <p class="rounded-xl bg-white p-4 ring-1 ring-neutral-200/60">广州市白云区养老服务及产业促进会优秀单位会员（桃花源）</p>
+        <p class="rounded-xl bg-white p-4 ring-1 ring-neutral-200/60">市社会福利与养老服务协会优秀会员单位（英明）</p>
+        <p class="rounded-xl bg-white p-4 ring-1 ring-neutral-200/60">长护险定点机构（三院）</p>
+        <p class="rounded-xl bg-white p-4 ring-1 ring-neutral-200/60">医保定点医疗机构（小港中医医院）</p>
+        <p class="rounded-xl bg-white p-4 ring-1 ring-neutral-200/60">【待补充：更多荣誉证书图片】</p>
+      </div>
+    </div>
+  </section>
+</MainLayout>

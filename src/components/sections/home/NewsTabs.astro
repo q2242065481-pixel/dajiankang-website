@@ -1,0 +1,89 @@
+---
+// 双 Tab 资讯（对齐泰康之家板块7「看居民生活」）：机构动态 / 品牌动态，卡片外链公众号
+import { newsArticles } from '@data/site_content';
+---
+
+<section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 md:py-20 lg:px-8">
+  <div class="mx-auto max-w-3xl text-center">
+    <p class="text-sm font-bold tracking-widest text-orange-500">看院内动态</p>
+    <h2 class="mt-2 text-2xl font-bold text-neutral-800 md:text-4xl">
+      有尊严、有温度的晚年日常
+    </h2>
+  </div>
+
+  {/* Tab 按钮 */}
+  <div class="mt-10 flex justify-center gap-3">
+    {
+      newsArticles.map((group, i) => (
+        <button
+          type="button"
+          data-news-tab={group.tab}
+          class:list={[
+            'news-tab-btn rounded-full px-6 py-2.5 text-sm font-bold transition',
+            i === 0
+              ? 'bg-orange-500 text-white'
+              : 'bg-white text-neutral-600 ring-1 ring-neutral-200 hover:text-orange-500',
+          ]}
+        >
+          {group.tabName}
+        </button>
+      ))
+    }
+  </div>
+
+  {/* Tab 面板 */}
+  {
+    newsArticles.map((group, i) => (
+      <div
+        data-news-panel={group.tab}
+        class:list={['mt-8', i !== 0 && 'hidden']}
+      >
+        <div class="grid gap-5 sm:grid-cols-2">
+          {group.items.map(item => (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-center justify-between gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-neutral-200/60 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-orange-300"
+            >
+              <div>
+                <p class="text-xs text-neutral-400">{item.date}</p>
+                <h3 class="mt-1 font-bold text-neutral-800 group-hover:text-orange-600">
+                  {item.title}
+                </h3>
+              </div>
+              <span class="shrink-0 rounded-full bg-orange-50 px-4 py-2 text-sm font-bold text-orange-500 transition group-hover:bg-orange-500 group-hover:text-white">
+                查看详情 →
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+
+  <p class="mt-6 text-center text-xs text-neutral-400">
+    图文内容将跳转至卓越大健康官方微信公众号阅读
+  </p>
+</section>
+
+<script>
+  const btns = document.querySelectorAll<HTMLButtonElement>('.news-tab-btn');
+  const panels = document.querySelectorAll<HTMLElement>('[data-news-panel]');
+  const ACTIVE = ['bg-orange-500', 'text-white'];
+  const IDLE = ['bg-white', 'text-neutral-600', 'ring-1', 'ring-neutral-200'];
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.newsTab;
+      btns.forEach(b => {
+        b.classList.remove(...ACTIVE, ...IDLE, 'hover:text-orange-500');
+        if (b === btn) b.classList.add(...ACTIVE);
+        else b.classList.add(...IDLE, 'hover:text-orange-500');
+      });
+      panels.forEach(p =>
+        p.classList.toggle('hidden', p.dataset.newsPanel !== target)
+      );
+    });
+  });
+</script>

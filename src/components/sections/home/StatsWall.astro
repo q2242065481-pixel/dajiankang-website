@@ -1,0 +1,41 @@
+---
+// 大数字信任墙（对齐泰康之家板块2）：眉题+大标题+4组大数字+CTA
+// 数据全部来自官方资料，禁止编造
+const stats = [
+  { count: '29年', label: '卓越教育品牌底蕴' },
+  { count: '3家', label: '长护险定点颐养院' },
+  { count: '130+', label: '宽逸颐养院床位' },
+  { count: '90%+', label: '宽逸颐养院入住率' },
+];
+---
+
+<section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 md:py-20 lg:px-8">
+  <div class="mx-auto max-w-3xl text-center">
+    <p class="text-sm font-bold tracking-widest text-orange-500">我们是</p>
+    <h2 class="mt-2 text-2xl font-bold text-balance text-neutral-800 md:text-4xl">
+      卓越教育旗下的广州医养品牌
+    </h2>
+    <p class="mt-4 text-neutral-600">
+      依托卓越教育29年教育底蕴，卓越大健康在广州运营三家颐养院与一家中医医院，全部院区均为长护险定点机构，医保可结算，为长者提供「家门口」的专业医养服务。
+    </p>
+  </div>
+  <div class="mt-12 grid grid-cols-2 gap-8 md:grid-cols-4">
+    {
+      stats.map(s => (
+        <div class="text-center">
+          <p class="text-4xl font-bold text-orange-500 md:text-5xl">{s.count}</p>
+          <div class="mx-auto mt-3 h-px w-12 bg-orange-300" />
+          <p class="mt-3 text-sm text-neutral-600">{s.label}</p>
+        </div>
+      ))
+    }
+  </div>
+  <div class="mt-10 text-center">
+    <a
+      href="/about"
+      class="inline-flex items-center gap-2 rounded-full bg-orange-500 px-7 py-3 text-sm font-bold text-white transition hover:bg-orange-600"
+    >
+      了解关于卓越大健康的更多信息 <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
